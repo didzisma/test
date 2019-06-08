@@ -3,11 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-class User
+class User implements \Symfony\Component\Security\Core\User\UserInterface
 {
     /**
      * @ORM\Id()
@@ -39,22 +41,22 @@ class User
     /**
      * @ORM\Column(type="boolean")
      */
-    private $is_active;
+    private $isActive;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $last_login_at;
+    private $lastLoginAt;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_at;
+    private $createdAt;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $confirmation_code;
+    private $confirmationCode;
 
     public function getId(): ?int
     {
@@ -109,51 +111,71 @@ class User
         return $this;
     }
 
-    public function getIsActive(): ?bool
+    public function isActive(): bool
     {
-        return $this->is_active;
+        return $this->isActive;
     }
 
-    public function setIsActive(bool $is_active): self
+    public function setIsActive(bool $isActive): self
     {
-        $this->is_active = $is_active;
+        $this->isActive = $isActive;
 
         return $this;
     }
 
     public function getLastLoginAt(): ?\DateTimeInterface
     {
-        return $this->last_login_at;
+        return $this->lastLoginAt;
     }
 
-    public function setLastLoginAt(?\DateTimeInterface $last_login_at): self
+    public function setLastLoginAt(?\DateTimeInterface $lastLoginAt): self
     {
-        $this->last_login_at = $last_login_at;
+        $this->lastLoginAt = $lastLoginAt;
 
         return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     public function getConfirmationCode(): ?string
     {
-        return $this->confirmation_code;
+        return $this->confirmationCode;
     }
 
-    public function setConfirmationCode(string $confirmation_code): self
+    public function setConfirmationCode(string $confirmationCode): self
     {
-        $this->confirmation_code = $confirmation_code;
+        $this->confirmationCode = $confirmationCode;
 
         return $this;
+    }
+
+    public function getRoles(): string
+    {
+        return '';
+    }
+
+    public function getSalt(): string
+    {
+        return '';
+    }
+
+    public function getUsername(): string
+    {
+        return $this->email;
+    }
+
+    public function eraseCredentials(): void
+    {
+
     }
 }

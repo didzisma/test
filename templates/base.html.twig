@@ -6,7 +6,29 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        <div class="content-wrapper">
+            <div class="header-menu">
+                <ul>
+                    <li>
+                        <a href="{{ path('homepage') }}">
+                            {{ 'Homepage'|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            {{ 'Login'|trans }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('user_register') }}">
+                            {{ 'Register'|trans }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            {% block body %}{% endblock %}
+            {% block javascripts %}{% endblock %}
+        </div>
     </body>
 </html>

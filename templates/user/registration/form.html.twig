@@ -1,0 +1,20 @@
+{{ form_start(form) }}
+    <div class="form-layout">
+        <div class="row">
+            {{ form_row(form.firstname) }}
+        </div>
+        <div class="row">
+            {{ form_row(form.lastname) }}
+        </div>
+        <div class="row">
+            {{ form_row(form.email) }}
+        </div>
+        <div class="row">
+            {{ form_row(form.password.first) }}
+        </div>
+        <div class="row">
+            {{ form_row(form.password.second) }}
+        </div>
+    </div>
+    <button type="submit" class="btn" formnovalidate>{{ 'Create Account'|trans }}</button>
+{{ form_end(form) }}

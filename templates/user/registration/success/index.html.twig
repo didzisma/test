@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Registration successful!'|trans }}{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1>{{ 'Registration successful'|trans }}</h1>
+
+        <div class="text-style">
+            {{ 'Thank you for registering'|trans }}
+            <br>
+            {{ 'Profile activation link has been sent to your email address %email%.'|trans({'%email%': '<strong>' ~ email ~ '</strong>'})|raw }}
+        </div>
+    </div>
+
+{% endblock %}
