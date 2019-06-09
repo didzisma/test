@@ -1,0 +1,14 @@
+.feed-item {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.feed-item .feed-title {
+    font-size: 18px;
+}
+.feed-item .feed-image {
+    width: 200px;
+    padding: 10px 0;
+}
+.feed-item .feed-image img {
+    width: 100%;
+}

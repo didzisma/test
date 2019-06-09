@@ -1,9 +1,28 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('feed') }}
+{% endblock %}
+
 {% block body %}
 
     <div class="container">
         <p>{{ 'You are logged in now'|trans }}</p>
+
+        <div class="feed">
+            {% for article in feed %}
+                <div class="feed-item">
+                    <div class="feed-title">
+                        <a href="{{ article.link|e }}" target="_blank">{{ article.title|e }}</a>
+                    </div>
+                    <div class="feed-image">
+                        <img src="{{ article.image|e }}" alt="" />
+                    </div>
+                    <div class="feed-description">{{ article.description|e }}</div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
 {% endblock %}
