@@ -7,7 +7,6 @@ namespace App\Controller\User\Register;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,7 +26,6 @@ class RegisterController extends AbstractController
      *
      * @param Request                      $request
      * @param UserPasswordEncoderInterface $passwordEncoder
-     * @param EventDispatcherInterface     $eventDispatcher
      * @param \Swift_Mailer                $mailer
      *
      * @return Response
@@ -36,7 +34,6 @@ class RegisterController extends AbstractController
     public function __invoke(
         Request $request,
         UserPasswordEncoderInterface $passwordEncoder,
-        EventDispatcherInterface $eventDispatcher,
         \Swift_Mailer $mailer
     ): Response
     {

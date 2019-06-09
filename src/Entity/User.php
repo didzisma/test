@@ -159,9 +159,9 @@ class User implements \Symfony\Component\Security\Core\User\UserInterface
         return $this;
     }
 
-    public function getRoles(): string
+    public function getRoles(): array
     {
-        return '';
+        return ['ROLE_USER'];
     }
 
     public function getSalt(): string

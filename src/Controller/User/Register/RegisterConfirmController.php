@@ -41,6 +41,6 @@ class RegisterConfirmController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('homepage');
+        return $this->redirectToRoute('user_login');
     }
 }
